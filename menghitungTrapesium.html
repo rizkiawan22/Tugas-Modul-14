@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Hitung Trapesium</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f8ff; 
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); 
+            width: 320px; 
+            text-align: center;
+            box-sizing: border-box; 
+        }
+
+        h2 {
+            color: #333;
+            margin-bottom: 25px;
+            font-size: 1.8em;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #555;
+            text-align: left; 
+        }
+
+        input[type="number"] {
+            width: calc(100% - 20px); 
+            padding: 10px;
+            margin-bottom: 15px; 
+            border: 1px solid #c0c0c0; 
+            border-radius: 5px;
+            box-sizing: border-box;
+            font-size: 1em;
+        }
+
+        button {
+            background-color: #4c70af; 
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1.1em;
+            width: 100%;
+            margin-top: 10px;
+            transition: background-color 0.3s ease; 
+        }
+
+        button:hover {
+            background-color: #4c70af; 
+        }
+
+        #hasil {
+            margin-top: 25px;
+            padding: 15px;
+            background-color: #e6ffe6; 
+            border: 1px solid #4CAF50;
+            border-radius: 5px;
+            font-size: 1.1em;
+            color: #28a745; 
+            font-weight: bold;
+            text-align: center;
+            min-height: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>Hitung Luas Trapesium</h2>
+
+        <label for="sisiA">Sisi A:</label>
+        <input type="number" id="sisiA" min="0" step="any" required>
+
+        <label for="sisiB">Sisi B:</label>
+        <input type="number" id="sisiB" min="0" step="any" required>
+
+        <label for="tinggi">Tinggi:</label>
+        <input type="number" id="tinggi" min="0" step="any" required>
+
+        <button onclick="hitung()">Hitung Luas</button>
+
+        <p id="hasil"></p>
+    </div>
+
+    <script>
+        function hitung() {
+            const a = parseFloat(document.getElementById('sisiA').value);
+            const b = parseFloat(document.getElementById('sisiB').value);
+            const t = parseFloat(document.getElementById('tinggi').value);
+
+            const hasilElement = document.getElementById('hasil');
+
+            if (isNaN(a) || isNaN(b) || isNaN(t) || a < 0 || b < 0 || t < 0) {
+                hasilElement.style.color = 'red'; 
+                hasilElement.style.borderColor = '#ff6666'; 
+                hasilElement.style.backgroundColor = '#ffe0e0'; 
+                hasilElement.textContent = "Masukkan angka positif yang benar.";
+            } else {
+                const luas = 0.5 * (a + b) * t;
+                hasilElement.style.color = '#28a745'; 
+                hasilElement.style.borderColor = '#4CAF50'; 
+                hasilElement.style.backgroundColor = '#e6ffe6'; 
+                hasilElement.textContent = "Luas Trapesium adalah: " + luas.toFixed(2);
+            }
+        }
+    </script>
+
+</body>
+</html>
